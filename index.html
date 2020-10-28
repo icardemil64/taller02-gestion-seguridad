@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Taller 02</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-3">Taller 02: Cifrador polialfabético</h1>
+        <form>
+            <div class="form-row">
+              <div class="col">
+                    <input id="inputClave1" type="number" class="form-control" placeholder="K1">
+              </div>
+              <div class="col">
+                    <input id="inputClave2" type="number" class="form-control" placeholder="K2">
+              </div>
+            </div>
+        </form>
+        </br>
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input id="inputSecuencia" type="text" class="form-control" placeholder="Secuencia">
+                </div>
+                <div class="col">
+                    <input id="inputTextoCifrado" type="text" class="form-control" placeholder="Entrada">
+                </div>
+            </div>
+        </form>
+        <button id="btnDescifrado" class="btn btn-primary mt-4">Descifrar</button>
+    </div>
+    <div class="container">
+        <h2 class="text-center mt-5">
+            Salida
+        </h2>
+        <input type="text" class="form-control" placeholder="Texto original" id="outputTextoClaro" disabled>
+    </div>
+
+    <script>
+        moduloEncriptador.nuevoEncriptador();
+    </script>
+</body>
+</html>
