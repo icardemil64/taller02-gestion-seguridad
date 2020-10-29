@@ -36,15 +36,16 @@ const moduloEncriptador = (() => {
                 secIndex = 0;
             }
         }
-        return textoRes
+        return textoRes.toUpperCase()
     }
 
     const encontrarCaracter = (letra,clave) => {
         let letraIndex = parseInt(alfBase.indexOf(letra)) + parseInt(clave);
         let largoAlf = alfBase.length;
-        if(letraIndex > largoAlf){
+        if(letraIndex >= largoAlf){
             letraIndex = (largoAlf - letraIndex)*(-1)
         }
+        console.log(letraIndex)
         return(alfBase[letraIndex]);
     }
 
