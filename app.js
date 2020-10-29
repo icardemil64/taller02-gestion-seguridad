@@ -1,31 +1,63 @@
 const moduloEncriptador = (() => {
    
-    const alfBase = ['a','b','c','d','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
-    let alfC1 = ['a','b','c','d','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
-    let alfC2 = ['a','b','c','d','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
-    let textoCifrado, secuencia;
-    let k1,k2;
+    const alfBase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    let textoCifrado, textoClaro, secuencia,k1,k2;
     const btnDescifrado = document.getElementById("btnDescifrado");
+    const btnCifrado = document.getElementById("btnCifrado");
 
-    const inicializarEncriptador = () =>{
+    const limpiarEncriptador = () =>{
         textoCifrado = "";
-        secuencia = "";
+        textoClaro = "";
+        secuencia = 0;
         k1 = 0;
         k2 = 0;
     }
+
     const obtenerEntradas = () => {
         k1 = document.getElementById('inputClave1').value,
         k2 = document.getElementById('inputClave2').value,
         secuencia = document.getElementById('inputSecuencia').value,
-        textoCifrado = document.getElementById('inputTextoCifrado').value;
+        textoCifrado = document.getElementById('inputTextoCifrado');
+        textoClaro = document.getElementById('inputTextoClaro');
     }
 
+    const descifrarTexto = () => {
+        
+    }
+
+    const cifrarTexto = (str) => {
+        let textoTemp = str.toLowerCase().split(" ").join("x");
+        let textoRes = ""
+        let secIndex = 0;
+        for(let i = 0; i < textoTemp.length; i++){
+            textoRes += encontrarCaracter(textoTemp[i],secuencia[secIndex] === '1'? k1:k2);
+            secIndex++;
+            if(secIndex === secuencia.length){
+                secIndex = 0;
+            }
+        }
+        return textoRes
+    }
+
+    const encontrarCaracter = (letra,clave) => {
+        let letraIndex = parseInt(alfBase.indexOf(letra)) + parseInt(clave);
+        let largoAlf = alfBase.length;
+        if(letraIndex > largoAlf){
+            letraIndex = (largoAlf - letraIndex)*(-1)
+        }
+        return(alfBase[letraIndex]);
+    }
 
     btnDescifrado.addEventListener('click', () => {
         obtenerEntradas();
-        console.log(textoCifrado);
     })
+
+    btnCifrado.addEventListener('click', () => {
+        obtenerEntradas();
+        textoCifrado.value = cifrarTexto(textoClaro.value);
+    })
+
     return{
-        nuevoEncriptador : inicializarEncriptador,
+        nuevoEncriptador : limpiarEncriptador,
     }
 })();
