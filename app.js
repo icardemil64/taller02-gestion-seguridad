@@ -1,11 +1,19 @@
 const moduloEncriptador = (() => {
-   
+    /**
+     * Establece las variables y constantes que hay se utilizarán el el cifrador
+     */
+    //Alfabeto base
     const alfBase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+    //Largo del alfabeto
     const largoAlf = alfBase.length;
+    //Variables que obtendrán las entradas del usuario
     let textoCifrado, textoClaro, secuencia,k1,k2;
+    //Botones de la interfaz
     const btnDescifrado = document.getElementById("btnDescifrado");
     const btnCifrado = document.getElementById("btnCifrado");
 
+
+    //Inicializa la entrada cuando el usuario inicia la aplicación
     const limpiarEncriptador = () =>{
         textoCifrado = "";
         textoClaro = "";
@@ -14,6 +22,9 @@ const moduloEncriptador = (() => {
         k2 = 0;
     }
 
+    /**
+     * Función encargada de obtener y validar los datos que ingresa el usuario por la interfaz
+     */
     const obtenerEntradas = () => {
         k1 = document.getElementById('inputClave1').value;       
         k2 = document.getElementById('inputClave2').value;
@@ -35,6 +46,11 @@ const moduloEncriptador = (() => {
         
     }
 
+    /**
+     * Función que se encarga de descifrar texto, donde en primer lugar, se realiza una evaluación caracter por caracter.
+     * @param {*} str Cadena que entra por el input de texto cifrado
+     */
+
     const descifrarTexto = (str) => {
         let textoTempDes = str.toLowerCase()
         let textoResult = ""
@@ -49,6 +65,10 @@ const moduloEncriptador = (() => {
         return textoResult.split("x").join(" ").toUpperCase()
     }
 
+    /**
+     * Función que se encarga de cifrar texto, donde en primer lugar, se realiza una evaluación caracter por caracter.
+     * @param {*} str Cadena que entra por el input de texto claro
+     */
     const cifrarTexto = (str) => {
         let textoTemp = str.toLowerCase().split(" ").join("x");
         let textoRes = ""
@@ -63,6 +83,12 @@ const moduloEncriptador = (() => {
         return textoRes.toUpperCase()
     }
 
+    /**
+     * Función encargada de cifrar o descrifrar el caracter. Retorna el caracter dependiendo de la acción requerida.
+     * @param {*} letra Un caracter del string que se quiere cifrar o descrifrar.
+     * @param {*} clave La clave asociada a la secuencia del cifrado o descrifrado. 
+     * @param {*} accion Booleano. True == Cifrado. False == Descifrado
+     */
     const encontrarCaracter = (letra,clave, accion) => {
         letraIndex=0;
         if(accion){
@@ -81,6 +107,9 @@ const moduloEncriptador = (() => {
         return(alfBase[letraIndex]);
     }
 
+    /**
+     * Añade un evento al botón para descifrar.
+     */
     btnDescifrado.addEventListener('click', () => {
         if(obtenerEntradas()){
             if(textoCifrado.value != ""){
@@ -93,6 +122,9 @@ const moduloEncriptador = (() => {
         
     })
 
+    /**
+     * Añade un evento al botón para cifrar.
+     */
     btnCifrado.addEventListener('click', () => { 
         if(obtenerEntradas()){        
             if(textoClaro.value != ""){
@@ -104,15 +136,33 @@ const moduloEncriptador = (() => {
         }      
     })
 
+    /**
+     * Retorna la función para inicializar la aplicación.
+     */
     return{
         nuevoEncriptador : limpiarEncriptador,
     }
 })();
-/*
 
+
+
+/*
+Palabras de prueba de otros grupos
+===========================
 ORSDFOCPLR
 k1 8 k2 3
 c1c2c1c2
 
+===========================
+IYTYBWJGTFWEÑAWÑVXWZPL
+23
+7
+12112
 
+===========================
+Gonzalo:
+ZKVQHEQERCZKMY
+10
+2
+C1C1C2C2C1C2
 */
