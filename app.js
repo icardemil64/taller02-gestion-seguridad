@@ -97,7 +97,8 @@ const moduloEncriptador = (() => {
         if(accion){
             letraIndex = parseInt(alfBase.indexOf(letra)) + parseInt(clave);
             if(letraIndex >= largoAlf){
-                letraIndex  = (largoAlf - letraIndex)*(-1)
+                // Letraindex = 32 Largoalf = 27 -> Letraindex = 5 -> F
+                letraIndex  = (letraIndex - largoAlf)
             }
         }
         else{
