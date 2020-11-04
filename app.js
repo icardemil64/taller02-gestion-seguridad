@@ -70,10 +70,13 @@ const moduloEncriptador = (() => {
      * @param {*} str Cadena que entra por el input de texto claro
      */
     const cifrarTexto = (str) => {
-        let textoTemp = str.toLowerCase().split(" ").join("x");
+        let textoTemp = str.toLowerCase().split(" ").join("x"); //HOLA MUNDO -> holaxmundo
         let textoRes = ""
         let secIndex = 0;
         for(let i = 0; i < textoTemp.length; i++){
+            /**
+             *  Se envía el cartacter de textoTemp, la clave y la operación a realizar
+             */
             textoRes += encontrarCaracter(textoTemp[i],secuencia[secIndex] === '1'? k1:k2, true);
             secIndex++;
             if(secIndex === secuencia.length){
@@ -160,9 +163,4 @@ IYTYBWJGTFWEÑAWÑVXWZPL
 12112
 
 ===========================
-Gonzalo:
-ZKVQHEQERCZKMY
-10
-2
-C1C1C2C2C1C2
 */
