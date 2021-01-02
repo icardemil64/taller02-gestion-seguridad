@@ -1,6 +1,6 @@
 const moduloEncriptador = (() => {
     /**
-     * Establece las variables y constantes que se utilizarán el el cifrador
+     * Establece las variables y constantes que se utilizarán en el cifrador
      */
     //Alfabeto base
     const alfBase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -13,7 +13,7 @@ const moduloEncriptador = (() => {
     const btnCifrado = document.getElementById("btnCifrado");
 
 
-    //Inicializa la entrada cuando el usuario inicia la aplicación
+    //Inicializa la entrada cuando el usuario ingresa a la aplicación
     const limpiarEncriptador = () =>{
         textoCifrado = "";
         textoClaro = "";
